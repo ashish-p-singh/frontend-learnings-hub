@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Level 8: DOM Manipulation Practice ⚡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #0f172a;
+      color: #f1f5f9;
+      padding: 40px 20px;
+      margin: 0;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    header {
+      margin-bottom: 40px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 20px;
+    }
+    h1 {
+      margin: 0 0 10px 0;
+      color: #38bdf8;
+    }
+    p {
+      color: #94a3b8;
+      margin: 0;
+    }
+    .playground-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    .card {
+      background: #1e293b;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #f8fafc;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+      padding-bottom: 8px;
+    }
+    button {
+      background: #38bdf8;
+      color: #0f172a;
+      border: none;
+      padding: 8px 16px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #7dd3fc;
+    }
+    .input-field {
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 8px 12px;
+      color: #fff;
+      border-radius: 6px;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 12px;
+    }
+    .input-field:focus {
+      outline: none;
+      border-color: #38bdf8;
+    }
+    /* DOM visual helpers */
+    .color-box {
+      height: 60px;
+      background: #475569;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      transition: background 0.3s;
+    }
+    .counter-value {
+      font-size: 2rem;
+      font-weight: 800;
+      text-align: center;
+      margin: 12px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Level 8: DOM Manipulation Playground 🎨</h1>
+      <p>Uncomment and write your DOM manipulation scripts inside <code>exercises.js</code> to link up these interactive UI cards.</p>
+    </header>
+
+    <div class="playground-grid">
+      
+      <!-- Challenge 1: Change Background Color -->
+      <div class="card" id="bgCard">
+        <div class="card-title">1. Change Background Color</div>
+        <div class="color-box" id="colorBox"></div>
+        <button id="bgBtn">Change Color</button>
+      </div>
+
+      <!-- Challenge 2: Show/Hide Password -->
+      <div class="card">
+        <div class="card-title">2. Show/Hide Password</div>
+        <input type="password" id="passwordInput" class="input-field" value="secretpassword123">
+        <button id="togglePasswordBtn">Show Password</button>
+      </div>
+
+      <!-- Challenge 3: Character Counter -->
+      <div class="card">
+        <div class="card-title">3. Character Counter</div>
+        <textarea id="charArea" class="input-field" rows="3" placeholder="Type here..."></textarea>
+        <div id="charCounter" style="font-size:0.9rem; color:#38bdf8;">0 characters</div>
+      </div>
+
+      <!-- Challenge 4: Counter -->
+      <div class="card">
+        <div class="card-title">4. Counter (+, -, Reset)</div>
+        <div class="counter-value" id="counterVal">0</div>
+        <div style="display:flex; gap:10px; justify-content:center;">
+          <button id="cntSub">-</button>
+          <button id="cntReset" style="background:#e2e8f0; color:#0f172a;">Reset</button>
+          <button id="cntAdd">+</button>
+        </div>
+      </div>
+
+      <!-- Challenge 5: Original Click Test Button -->
+      <div class="card">
+        <div class="card-title">5. Original Button Click Alert</div>
+        <p style="margin-bottom:12px; font-size:0.9rem;">From basic-js-practice.js click handler:</p>
+        <button id="button">Test Alert Button</button>
+      </div>
+
+      <!-- Dynamic Cards can be added below for modal, accordion, tabs, carousel, shopping cart etc. -->
+    </div>
+  </div>
+
+  <script src="exercises.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>random</title>
+    <style>
+        body{
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            border:2px solid rgb(255, 255, 255);
+            height: 150px; 
+            width:150px;
+            border-radius: 100px;
+            margin: 20px;
+            box-shadow: 0px 0px 30px 5px ;
+            transition: all 1s ease;
+        }
+        #glow{
+            border: none;
+            padding: 15px;
+            margin-top: 30px;
+            border-radius: 999px;
+            background-color: rgb(217, 145, 217);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    </div>
+    <button id="glow">Glow</button>
+    
+    <script>
+        function hi(){
+            let my=setInterval(()=>{
+                let a =(Math.floor(Math.random()*256))
+                let b =(Math.floor(Math.random()*256))
+                let c =(Math.floor(Math.random()*256))
+                let d=document.querySelector('.container').style
+                d.backgroundColor = `rgb(${a}, ${b}, ${c})`;
+                d.border=`2px solid rgb(${a}, ${b}, ${c})`;
+                d.boxShadow = `0 0 30px 5px rgb(${a}, ${b}, ${c})`;
+            },1500)}
+        let a=document.getElementById('glow')
+        a.addEventListener('click',hi)
+    </script>
+</body>
+</html>

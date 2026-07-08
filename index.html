@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Development Learning Journey 🚀</title>
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Modern Styling Reset & CSS Custom Properties */
+    :root {
+      --bg-dark: #090d16;
+      --bg-card: rgba(17, 24, 39, 0.7);
+      --bg-card-hover: rgba(26, 36, 56, 0.85);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      
+      /* Harmonious Gradient Colors */
+      --primary-grad: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+      --accent-color: #a855f7;
+      --accent-light: #c084fc;
+      
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(168, 85, 247, 0.4);
+      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+      --glow-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.1) 0px, transparent 50%),
+        radial-gradient(at 50% 0%, rgba(168, 85, 247, 0.08) 0px, transparent 50%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header Design */
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 16px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: 9999px;
+      background: rgba(168, 85, 247, 0.15);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      color: var(--accent-light);
+      margin-bottom: 16px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+      background: var(--primary-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    header p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+
+    /* Filter Controls */
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    .tab-btn {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      padding: 10px 20px;
+      border-radius: 99px;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .tab-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-main);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .tab-btn.active {
+      background: var(--primary-grad);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: var(--glow-shadow);
+    }
+
+    /* Grid Layout */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 25px;
+    }
+
+    /* Project Cards */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--primary-grad);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      background: var(--bg-card-hover);
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-lg), var(--glow-shadow);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-category {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--accent-light);
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .card-description {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      flex-grow: 1;
+      font-weight: 300;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      color: #cbd5e1;
+    }
+
+    .card-links {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 10px 14px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      text-align: center;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-primary {
+      background: var(--primary-grad);
+      color: #fff;
+      box-shadow: 0 4px 10px rgba(168, 85, 247, 0.25);
+    }
+
+    .btn-primary:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-main);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 80px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 300;
+    }
+
+    footer a {
+      color: var(--accent-light);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Animation on entry */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card {
+      animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    /* Staggered entry animations */
+    .card:nth-child(1) { animation-delay: 0.05s; }
+    .card:nth-child(2) { animation-delay: 0.1s; }
+    .card:nth-child(3) { animation-delay: 0.15s; }
+    .card:nth-child(4) { animation-delay: 0.2s; }
+    .card:nth-child(5) { animation-delay: 0.25s; }
+    .card:nth-child(6) { animation-delay: 0.3s; }
+    .card:nth-child(7) { animation-delay: 0.35s; }
+    .card:nth-child(8) { animation-delay: 0.4s; }
+    .card:nth-child(9) { animation-delay: 0.45s; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <span class="badge">Portfolio Portal</span>
+      <h1>Web Dev Learnings Hub</h1>
+      <p>A curated collection of web development concepts, practical exercises, interactive components, and clones built during my learning journey.</p>
+    </header>
+
+    <!-- Filter Buttons -->
+    <div class="filter-tabs">
+      <button class="tab-btn active" onclick="filterCategory('all')">All Projects</button>
+      <button class="tab-btn" onclick="filterCategory('bookmarks')">Bookmark Apps</button>
+      <button class="tab-btn" onclick="filterCategory('cards')">Card UI</button>
+      <button class="tab-btn" onclick="filterCategory('css')">CSS Basics & Animation</button>
+      <button class="tab-btn" onclick="filterCategory('javascript')">JS Core Concepts</button>
+      <button class="tab-btn" onclick="filterCategory('clones')">UI Clones</button>
+    </div>
+
+    <!-- Interactive Grid -->
+    <div class="projects-grid" id="projectsGrid">
+      
+      <!-- Card 1: Dashboard Bookmark -->
+      <div class="card" data-category="bookmarks">
+        <div>
+          <div class="card-category">Bookmark Apps</div>
+          <h2 class="card-title">MarkKeep Bookmark Dashboard</h2>
+          <p class="card-description">A advanced and fully styled dashboard to organize and filter all your favorite bookmarks. Features interactive categorization and state management.</p>
+          <div class="card-tags">
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS Grid</span>
+            <span class="tag">JavaScript ES6</span>
+          </div>
+        </div>
+        <div class="card-links">
+          <a href="bookmark-apps/dashboard-bookmark-v3/index.html" class="btn btn-primary" target="_blank">Launch App</a>
+          <a href="https://github.com" class="btn btn-secondary" target="_blank">Code</a>
+        </div>
+      </div>
+
+      <!-- Card 2: Styled Bookmark v2 -->
+      <div class="card" data-category="bookmarks">
+        <div>
+          <div class="card-category">Bookmark Apps</div>
+          <h2 class="card-title">Styled Bookmarks List (v2)</h2>
+          <p class="card-description">A clean, custom-styled list-based bookmark manager featuring input forms, styling separation (CSS/HTML/JS), and dynamic DOM insertion.</p>
+          <div class="card-tags">
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS separation</span>
+            <span class="tag">JS Events</span>
+          </div>
+        </div>
+        <div class="card-links">
+          <a href="bookmark-apps/styled-bookmark-v2/index.html" class="btn btn-primary" target="_blank">Launch App</a>
+          <a href="https://github.com" class="btn btn-secondary" target="_blank">Code</a>
+        </div>
+      </div>
+
+      <!-- Card 3: Simple Bookmark v1 -->
+      <div class="card" data-category="bookmarks">
+        <div>
+          <div class="card-category">Bookmark Apps</div>
+          <h2 class="card-title">Simple Bookmark App (v1)</h2>
+          <p class="card-description">My initial step in building bookmark managers. A single-file HTML bookmark application utilizing forms, event prevent-defaults, and inline scripts.</p>
+          <div class="card-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS Embedded</span>
+            <span class="tag">Vanilla JS</span>
+          </div>
+        </div>
+        <div class="card-links">
+          <a href="bookmark-apps/simple-bookmark-v1/index.html" class="btn btn-primary" target="_blank">Launch App</a>
+          <a href="https://github.com" class="btn btn-secondary" target="_blank">Code</a>
+        </div>
+      </div>
+
+      <!-- Card 4: Dynamic Card Generator -->
+      <div class="card" data-category="cards">
+        <div>
+          <div class="card-category">Card UI</div>
+          <h2 class="card-title">Dynamic Card Generator</h2>
+          <p class="card-description">A JavaScript utility that dynamically generates video-style content cards based on parameters such as title, views count, and upload date.</p>
+          <div class="card-tags">
+            <span class="tag">JavaScript</span>
+            <span class="tag">Dynamic DOM</span>
+            <span class="tag">Card Design</span>
+          </div>
+        </div>
+        <div class="card-links">
+          <a href="card-components/dynamic-card-generator/index.html" class="btn btn-primary" target="_blank">Launch App</a>
+          <a href="https://github.com" class="btn btn-secondary" target="_blank">Code</a>
+        </div>
+      </div>
+
+      <!-- Card 5: Simple Card Component -->
+      <div class="card" data-category="cards">
+        <div>
+          <div class="card-category">Card UI</div>
+          <h2 class="card-title">Lago di Braies Card Component</h2>
+          <p class="card-description">A clean, stylish content card displaying travel information. Uses responsive layouts, object-fit positioning for images, and tag pills.</p>
+          <div class="card-tags">
+            <span class="tag">HTML5</span>
+            <span class="tag">Responsive CSS</span>
+            <span class="tag">Layout Design</span>
+          </div>
+        </div>
+        <div class="card-links">
+          <a href="card-components/simple-card/index.html" class="btn btn-primary" target="_blank">Launch App</a>
+          <a href="https://github.com" class="btn btn-secondary" target="_blank">Code</a>
+        </div>
+      </div>
+
+      <!-- Card 6: Glowing Bulb Toggle -->
+      <div class="card" data-category="css">
+        <div>
+          <div class="card-category">CSS Basics & Animation</div>
+          <h2 class="card-title">Glowing Bulb Toggle</h2>
+          <p class="card-description">An interactive example of using CSS box-shadows, transitions, and JavaScript class toggles to simulate a glowing lightbulb.</p>
+          <div class="card-tags">
+            <span class="tag">CSS Transitions</span>
+            <span class="tag">Box Shadows</span>
+            <span class="tag">JS Click Toggle</span>
+          </div>
+        </div>
+        <div class="card-links">
+          <a href="css-animations/glowing-bulb.html" class="btn btn-primary" target="_blank">Launch App</a>
+          <a href="https://github.com" class="btn btn-secondary" target="_blank">Code</a>
+        </div>
+      </div>
+
+      <!-- Card 7: Bouncing Ball Animation -->
+      <div class="card" data-category="css">
+        <div>
+          <div class="card-category">CSS Basics & Animation</div>
+          <h2 class="card-title">Bouncing Ball Simulation</h2>
+          <p class="card-description">A dual-axis CSS animation keyframe demo. Simulates a bouncing ball using separate animations for horizontal translation and vertical bounce ease-out curves.</p>
+          <div class="card-tags">
+            <span class="tag">CSS Keyframes</span>
+            <span class="tag">Animation curves</span>
+            <span class="tag">Absolute positioning</span>
+          </div>
+        </div>
+        <div class="card-links">
+          <a href="css-animations/bouncing-ball.html" class="btn btn-primary" target="_blank">Launch App</a>
+          <a href="https://github.com" class="btn btn-secondary" target="_blank">Code</a>
+        </div>
+      </div>
+
+      <!-- Card 8: Random Color Glow -->
+      <div class="card" data-category="css">
+        <div>
+          <div class="card-category">CSS Basics & Animation</div>
+          <h2 class="card-title">Random Color Generator Box</h2>
+          <p class="card-description">An interactive box that glows with dynamically generated random RGB colors at regular intervals using JavaScript's setInterval.</p>
+          <div class="card-tags">
+            <span class="tag">setInterval</span>
+            <span class="tag">RGB Generator</span>
+            <span class="tag">CSS box-shadow</span>
+          </div>
+        </div>
+        <div class="card-links">
+          <a href="css-animations/random-color-glow.html" class="btn btn-primary" target="_blank">Launch App</a>
+          <a href="https://github.com" class="btn btn-secondary" target="_blank">Code</a>
+        </div>
+      </div>
+
+      <!-- Card 9: UltraEdit Navbar Clone -->
+      <div class="card" data-category="clones">
+        <div>
+          <div class="card-category">UI Clones</div>
+          <h2 class="card-title">UltraEdit Landing Page Clone</h2>
+          <p class="card-description">A responsive page layout replica of UltraEdit's website header, navbar, and grid configurations. Focuses on CSS Grid and media queries.</p>
+          <div class="card-tags">
+            <span class="tag">Media Queries</span>
+            <span class="tag">CSS Grid</span>
+            <span class="tag">Navbar Layout</span>
+          </div>
+        </div>
+        <div class="card-links">
+          <a href="cloned-layouts/ultraedit-clone/index.html" class="btn btn-primary" target="_blank">Launch App</a>
+          <a href="https://github.com" class="btn btn-secondary" target="_blank">Code</a>
+        </div>
+      </div>
+
+      <!-- Card 10: Multicolor Navbar Layout -->
+      <div class="card" data-category="clones">
+        <div>
+          <div class="card-category">UI Clones</div>
+          <h2 class="card-title">Multicolor Navigation Bar</h2>
+          <p class="card-description">A creative navigation bar with colorful hovering pills, sticky header position, a 3D float button, and standard content layout boxes.</p>
+          <div class="card-tags">
+            <span class="tag">Sticky Positioning</span>
+            <span class="tag">Hover transitions</span>
+            <span class="tag">UI Layout</span>
+          </div>
+        </div>
+        <div class="card-links">
+          <a href="cloned-layouts/multicolor-navbar/index.html" class="btn btn-primary" target="_blank">Launch App</a>
+          <a href="https://github.com" class="btn btn-secondary" target="_blank">Code</a>
+        </div>
+      </div>
+
+      <!-- Card 11: JS Concepts Run-in-browser -->
+      <div class="card" data-category="javascript">
+        <div>
+          <div class="card-category">JS Core Concepts</div>
+          <h2 class="card-title">JS Concept Playground (Levels 1–9)</h2>
+          <p class="card-description">Interactive scripting playground where you can select, execute, and verify modules for all 9 levels of JavaScript concepts (Variables, Loops, Closures, Objects, Async Promises).</p>
+          <div class="card-tags">
+            <span class="tag">ES6+</span>
+            <span class="tag">Console Playground</span>
+            <span class="tag">Roadmap</span>
+          </div>
+        </div>
+        <div class="card-links">
+          <a href="js-concepts-practice/run-js-in-browser.html" class="btn btn-primary" target="_blank">Open Playground</a>
+          <a href="https://github.com" class="btn btn-secondary" target="_blank">Code</a>
+        </div>
+      </div>
+
+      <!-- Card 12: DOM Playground -->
+      <div class="card" data-category="javascript">
+        <div>
+          <div class="card-category">JS Core Concepts</div>
+          <h2 class="card-title">Level 8: DOM Playground</h2>
+          <p class="card-description">A visual sandbox highlighting responsive elements, click handlers, text event listeners, dynamic background colors, and counters.</p>
+          <div class="card-tags">
+            <span class="tag">DOM Events</span>
+            <span class="tag">Input Listeners</span>
+            <span class="tag">Interactivity</span>
+          </div>
+        </div>
+        <div class="card-links">
+          <a href="js-concepts-practice/level-8-dom/index.html" class="btn btn-primary" target="_blank">Launch Playground</a>
+          <a href="https://github.com" class="btn btn-secondary" target="_blank">Code</a>
+        </div>
+      </div>
+
+      <!-- Card 13: CSS Grid Basics -->
+      <div class="card" data-category="css">
+        <div>
+          <div class="card-category">CSS Basics & Animation</div>
+          <h2 class="card-title">CSS Grid Practice</h2>
+          <p class="card-description">Detailed sandbox exercises mapping out CSS Grid layouts, track sizing, template columns, rows, spacing, and explicit alignments.</p>
+          <div class="card-tags">
+            <span class="tag">CSS Grid</span>
+            <span class="tag">Tracks & Gaps</span>
+            <span class="tag">Layout Practice</span>
+          </div>
+        </div>
+        <div class="card-links">
+          <a href="css-basics-grids/grid-practice-1.html" class="btn btn-primary" target="_blank">Grid 1</a>
+          <a href="css-basics-grids/grid-practice-2.html" class="btn btn-secondary" target="_blank">Grid 2</a>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      <p>Created with 💜 as a catalog of web development achievements.</p>
+    </footer>
+  </div>
+
+  <script>
+    function filterCategory(category) {
+      // Toggle active tab class
+      const tabs = document.querySelectorAll('.tab-btn');
+      tabs.forEach(tab => {
+        tab.classList.remove('active');
+        if(tab.innerText.toLowerCase().includes(category) || 
+           (category === 'all' && tab.innerText.toLowerCase().includes('all')) ||
+           (category === 'cards' && tab.innerText.toLowerCase().includes('card ui')) ||
+           (category === 'css' && tab.innerText.toLowerCase().includes('css basics')) ||
+           (category === 'javascript' && tab.innerText.toLowerCase().includes('js core')) ||
+           (category === 'clones' && tab.innerText.toLowerCase().includes('ui clones'))) {
+          tab.classList.add('active');
+        }
+      });
+
+      // Filter cards
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (category === 'all' || cardCat === category) {
+          card.style.display = 'flex';
+          card.style.animation = 'fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

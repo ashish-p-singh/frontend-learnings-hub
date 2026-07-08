@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multicolor nav Bar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: rgb(178, 168, 208);
+            min-height: 100vh;
+        }
+        header{
+            position: sticky;
+            top: 0;
+            z-index: 11000;
+        }
+
+        nav {
+            
+            width: 100%;
+            background-color: rgb(201, 143, 242);
+        }
+
+        ul {
+            display: flex;
+            justify-content: center;
+        }
+
+        ul li {
+            list-style: none;
+            padding: 10px;
+            font-weight: 100;
+            margin: 20px;
+            border-radius: 999px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        #a {
+            background-color: rgb(133, 244, 244);
+        }
+
+        #a:hover {
+            background-color: rgb(157, 237, 157);
+        }
+
+        #b {
+            background-color: rgb(143, 202, 238);
+        }
+
+        #b:hover {
+            background-color: rgb(157, 237, 157);
+        }
+
+        #c {
+            background-color: rgb(225, 145, 154);
+        }
+
+        #c:hover {
+            background-color: rgb(157, 237, 157);
+        }
+
+        #d {
+            background-color: rgb(197, 180, 209);
+        }
+
+        #d:hover {
+            background-color: rgb(157, 237, 157);
+        }
+
+        #e {
+            background-color: rgb(219, 156, 11);
+        }
+
+        #e:hover {
+            background-color: rgb(157, 237, 157);
+        }
+
+        .boxes {
+            display: flex;
+            margin: 35px 10vw;
+        }
+
+        .left {
+            height: 75vh;
+            width: 40vw;
+            margin-right: 10vw;
+          
+            background-color: rgba(205, 221, 244, 0.655);
+            border-radius: 30px;
+        }
+
+        .right {
+            height: 75vh;
+            width: 40vw;
+            background-color: rgba(200, 232, 221, 0.686);
+            border-radius: 30px;
+        }
+
+        .rect {
+            height: 300px;
+            width: auto;
+            background-color: rgb(243, 173, 173);
+            margin: 20vh;
+            border-radius: 30px;
+        }
+        .foot{
+            background-color: rgb(25, 0, 44);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            font-family: sans-serif;
+        }
+        .fix{
+            height: 50px;
+            width: 50px;
+            background-color: antiquewhite;
+            border-radius: 100%;
+            position: fixed;
+            bottom: 60px;
+            right: 10px; 
+        }
+        img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 100%;
+            
+        }
+    </style>
+</head>
+
+<body>
+   <header>
+    <nav>
+        <ul>
+            <li id="a">
+            <a href="https://www.youtube.com" target="_blank">Home
+            </a></li>
+            <li id="b">Html</li>
+            <li id="c">CSS</li>
+            <li id="d">Script</li>
+            <li id="e">BootStrap</li>
+        </ul>
+    </nav>
+    </header>
+    <main>
+        <div class="boxes">
+            <div class="left"></div>
+            <div class="right"></div>
+        </div>
+        <div class="rect">
+        </div>
+        <div class="fix">
+            <img src="mando.jpg" alt="mando">
+        </div>
+    </main>
+    <footer>
+        <div class="foot"></div>
+    </footer>
+</body>
+
+</html>

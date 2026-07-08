@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Concept Playground 🧪</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .card {
+      background: #1e293b;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 35px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      text-align: center;
+    }
+    h1 {
+      font-size: 1.8rem;
+      margin: 0 0 10px 0;
+      color: #38bdf8;
+    }
+    p {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      margin-bottom: 25px;
+      line-height: 1.5;
+    }
+    select {
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      width: 100%;
+      font-size: 1rem;
+      outline: none;
+      cursor: pointer;
+      margin-bottom: 20px;
+      font-family: inherit;
+    }
+    select:focus {
+      border-color: #38bdf8;
+    }
+    button {
+      background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+      color: #0f172a;
+      border: none;
+      padding: 12px 25px;
+      font-weight: 700;
+      border-radius: 8px;
+      width: 100%;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.2s;
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
+    }
+    button:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+    .info-box {
+      margin-top: 25px;
+      background: rgba(56, 189, 248, 0.05);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 8px;
+      padding: 15px;
+      font-size: 0.85rem;
+      color: #7dd3fc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>JS Concept Playground 🧪</h1>
+    <p>Select a practice level or exercise module, click run, and open your browser's Developer Tools Console (<b>F12</b> or <b>Ctrl+Shift+I</b>) to check results!</p>
+    
+    <select id="scriptSelect">
+      <option value="level-1-variables-operators/exercises.js">Level 1: Variables & Operators</option>
+      <option value="level-2-conditions/exercises.js">Level 2: Conditions</option>
+      <option value="level-3-loops/exercises.js">Level 3: Loops</option>
+      <option value="level-4-strings/exercises.js">Level 4: Strings</option>
+      <option value="level-5-arrays/exercises.js">Level 5: Arrays</option>
+      <option value="level-6-functions/exercises.js">Level 6: Functions</option>
+      <option value="level-7-objects/exercises.js">Level 7: Objects</option>
+      <option value="level-9-async/exercises.js">Level 9: Async (Stubs)</option>
+      <option value="archived-learnings/object-oriented-js.js">Archived: OOP Learnings</option>
+      <option value="archived-learnings/promises-and-async.js">Archived: Promises & Async Learnings</option>
+      <option value="archived-learnings/try-catch-error-handling.js">Archived: Try-Catch Learnings</option>
+      <option value="archived-learnings/basic-js-practice.js">Archived: Basic JS Learnings</option>
+      <option value="archived-learnings/simple-variable-practice.js">Archived: Simple Variables Learnings</option>
+      <option value="archived-learnings/temp-playground.js">Archived: Temp Swap Playground</option>
+    </select>
+
+    <button id="runBtn">Run Module Code</button>
+
+    <div class="info-box">
+      <span>💡</span> Hint: Console outputs will appear in your developer tools!
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('runBtn').addEventListener('click', () => {
+      const select = document.getElementById('scriptSelect');
+      const scriptUrl = select.value;
+
+      console.clear();
+      console.log(`%c[PLAYGROUND] Loading and executing script: ${scriptUrl}`, 'color: #38bdf8; font-weight: bold;');
+
+      // Remove existing playground scripts
+      const oldScript = document.getElementById('playgroundScript');
+      if (oldScript) oldScript.remove();
+
+      // Create new script tag and inject
+      const script = document.createElement('script');
+      script.id = 'playgroundScript';
+      script.src = scriptUrl + '?t=' + Date.now(); // Cache bust
+      document.body.appendChild(script);
+    });
+  </script>
+</body>
+</html>
