@@ -1,5 +1,9 @@
-let a= prompt('enter a number:')
-let b=prompt("enter a number:")
+
+// let a= prompt('enter a number:')
+// let b=prompt("enter a number:")
+let a = 5; 
+let b = "hi";
+
 if(isNaN(a)|| isNaN(b)){
     throw SyntaxError('Sorry');
 }

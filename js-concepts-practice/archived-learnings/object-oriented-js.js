@@ -21,10 +21,10 @@
 // console.log(a.eats())
 class Hi{
     constructor(name){
-        this.name=name
+        this._name = name
     }
-    get name {
-        return this.name
+    get name() {
+        return this._name
     }
 }
 let a= new Hi('Rabbit')

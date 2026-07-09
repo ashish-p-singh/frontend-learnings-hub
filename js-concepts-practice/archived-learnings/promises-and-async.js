@@ -5,6 +5,9 @@ const callback = (arg, fn) => {
     console.log(arg)
     fn()
 }
+
+
+/*
 const loadScript = (src, callback) => {
     let sc = document.createElement("script");
     sc.src = src;
@@ -12,6 +15,8 @@ const loadScript = (src, callback) => {
     document.head.append(sc)
 }
 loadScript("https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/prism.min.js", callback)
+*/
+
 console.log('This is Promises');
 
 let prom1 = new Promise((resolve, reject) => {
@@ -44,8 +49,11 @@ let prom2 = new Promise((resolve, reject) => {
 let p3 = Promise.race([prom1, prom2])
 p3.then((a) => {
     console.log(a)
-    console.log(err)
+    // console.log(err) // Commented out to prevent ReferenceError (err is not defined)
+}).catch((error) => {
+    console.log("Promise race error:", error); // Simple catch to prevent unhandled rejection crashes
 })
+
 async function getData() {
     // Simulate getting data from a server
     return new Promise((resolve, reject) => {
@@ -59,6 +67,8 @@ async function getData() {
 // resolve means promise has settled successfully
 // reject means promise has not settled successfully
 
+
+/*
 async function getData() {
    
     let x = await fetch('https://jsonplaceholder.typicode.com/todos/1')
@@ -77,6 +87,8 @@ async function getData() {
     let data = await x.json() 
     return data
 }
+*/
+
 async function getData(){
    let x= await fetch('https://jsonplaceholder.typicode.com/todos/1')
    let c=await x.text()
@@ -101,14 +113,3 @@ async function main(){
 }
 
 main()
-
- 
-
-// data.then((v) => { 
-//     console.log(data)
-
-//     console.log("process data")
-
-//     console.log("task 2")
- 
-// })
