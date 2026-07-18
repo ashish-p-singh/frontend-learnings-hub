@@ -75,6 +75,7 @@
         box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
         font-weight: 700;
         font-size: 1rem;
+        cursor: pointer;
     }
 
     button:hover {
@@ -125,7 +126,7 @@
         </div>
     </div>
     <script>
-        document.getElementById('runBtb').addEventListener("cilick", () => {
+        document.getElementById('runBtn').addEventListener("click", () => {
             const select = document.getElementById('scriptSelect')
             const scriptUrl = select.value
             console.clear();

@@ -94,7 +94,7 @@ function calculateBill(amount) {
   }
   return amount;
 }
-console.log("The discounted price is:",calculateBill)
+console.log("The discounted price is:",calculateBill(70000))
 console.log("------------------------");
 
 // 8. Calculate BMI from height (m) and weight (kg)

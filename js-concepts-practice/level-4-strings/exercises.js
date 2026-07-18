@@ -5,7 +5,7 @@ console.log("--- Level 4 Exercises ---");
 // 1. Reverse a string
 function reverseString(str) {
   // TODO: Write your code here
-  return "";
+  return "";  
 }
 console.log("------------------------");
 
