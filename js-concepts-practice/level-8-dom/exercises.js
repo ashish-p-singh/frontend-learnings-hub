@@ -6,6 +6,7 @@ const colorBox = document.getElementById('colorBox');
 if (bgBtn && colorBox) {
   bgBtn.addEventListener('click', () => {
     // TODO: Write code to randomly change colorBox.style.backgroundColor
+    colorBox.style.backgroundColor="red";
   });
 }
 
@@ -15,15 +16,19 @@ const passwordInput = document.getElementById('passwordInput');
 if (togglePasswordBtn && passwordInput) {
   togglePasswordBtn.addEventListener('click', () => {
     // TODO: Toggle passwordInput.type between 'password' and 'text'
+    passwordInput.type="input"
   });
 }
 
 // 3. Character counter for textarea
 const charArea = document.getElementById('charArea');
 const charCounter = document.getElementById('charCounter');
+
 if (charArea && charCounter) {
   charArea.addEventListener('input', () => {
     // TODO: Update charCounter.textContent with current text length
+    let count =1
+    charCounter.inner tml=`${count+1} characters`
   });
 }
 

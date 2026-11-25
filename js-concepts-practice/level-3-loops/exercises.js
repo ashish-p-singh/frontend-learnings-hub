@@ -129,9 +129,10 @@ function printPrimesInRange(start, end) {
   for (let i = start; i <= end; i++) {
     if (i <= 1)
       continue
-    if (i == 2)
+    if (i == 2){
       a.push(2)
     continue
+  }
     let Prime = true
     if (i % 2 == 0)
       continue
